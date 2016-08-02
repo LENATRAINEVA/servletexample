@@ -10,7 +10,7 @@ public class ErrorServlet extends HttpServlet {
 
     public void init() throws ServletException
     {
-        message = "Servlet Start!";
+        message = "Servlet Start! 5";
     }
 
     public void doGet(HttpServletRequest request,

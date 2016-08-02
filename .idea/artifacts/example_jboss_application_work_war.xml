@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="example-jboss-application-work:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/example_jboss_application_work_war</output-path>
+    <root id="archive" name="example-jboss-application-work_war.war">
+      <element id="artifact" artifact-name="example-jboss-application-work:war exploded" />
+    </root>
+  </artifact>
+</component>
