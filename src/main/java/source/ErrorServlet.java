@@ -6,20 +6,18 @@ import javax.servlet.http.*;
 
 public class ErrorServlet extends HttpServlet {
 
-    private String message;
+    public static String error;
 
-    public void init() throws ServletException
-    {
-        message = "Servlet Start! 5";
-    }
+    public void init() throws ServletException {}
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response)
             throws ServletException, IOException
     {
+
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        out.println("<h1>" + message + "</h1>");
+        out.println("<h1>" + error + "</h1>");
     }
 
 }

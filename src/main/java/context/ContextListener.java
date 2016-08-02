@@ -3,6 +3,7 @@ package context;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.WebApplicationInitializer;
+import source.ErrorServlet;
 
 import javax.servlet.ServletContext;
 
@@ -13,16 +14,19 @@ public class ContextListener implements WebApplicationInitializer {
 
         System.out.println("ContextListener : onStartup");
 
-        /*ServletRegistration.Dynamic registration = container.addServlet("dispatcher", new DispatcherServlet());
-        registration.setLoadOnStartup(1);
-        registration.addMapping("/example*//*");*/
+        try {
+            ApplicationContext ctx =
+                    new AnnotationConfigApplicationContext(SimpleContextConfiguration.class);
 
+            ErrorClass errorClass = ctx.getBean(ErrorClass.class);
+            errorClass.beanDefinition();
+        } catch (Exception ex) {
+            ApplicationContext ctx =
+                    new AnnotationConfigApplicationContext(StubContextConfiguration.class);
 
-        ApplicationContext ctx =
-                new AnnotationConfigApplicationContext(SimpleContextConfiguration.class);
+            ErrorServlet.error = ex.getMessage();
 
-        ErrorClass errorClass = ctx.getBean(ErrorClass.class);
-        errorClass.beanDefinition();
+        }
     }
 
 }
