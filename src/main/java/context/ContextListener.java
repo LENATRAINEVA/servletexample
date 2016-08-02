@@ -7,26 +7,21 @@ import source.ErrorServlet;
 
 import javax.servlet.ServletContext;
 
+/**
+ * Данный класс загружает спринговый контекст, в контесте возникает исключение, и загружается другой контекст
+ */
 public class ContextListener implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext container) {
-
-        System.out.println("ContextListener : onStartup");
-
         try {
             ApplicationContext ctx =
                     new AnnotationConfigApplicationContext(SimpleContextConfiguration.class);
-
             ErrorClass errorClass = ctx.getBean(ErrorClass.class);
             errorClass.beanDefinition();
         } catch (Exception ex) {
-            ApplicationContext ctx =
-                    new AnnotationConfigApplicationContext(StubContextConfiguration.class);
-
-            ErrorServlet.error = ex.getMessage();
-
+            new AnnotationConfigApplicationContext(StubContextConfiguration.class);
+            ErrorServlet.error = ex;
         }
     }
-
 }

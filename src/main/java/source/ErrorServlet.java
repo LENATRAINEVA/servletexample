@@ -4,9 +4,12 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+/**
+ * Сервлет отображения ошибки, если в спринговом контексте произошла ошибка
+ */
 public class ErrorServlet extends HttpServlet {
 
-    public static String error;
+    public static Exception error;
 
     public void init() throws ServletException {}
 

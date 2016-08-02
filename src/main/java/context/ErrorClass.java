@@ -1,5 +1,8 @@
 package context;
 
+/**
+ * Данный класс необходим для эмуляции ситуации не загрузившегося контекста
+ */
 public class ErrorClass {
 
     public final static String successResult = "CONTEXT START";
